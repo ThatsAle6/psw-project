@@ -6,9 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ecommerce.com.pswproject.model.ShopCart;
 import ecommerce.com.pswproject.model.User;
-import ecommerce.com.pswproject.repository.ProductRepository;
 import ecommerce.com.pswproject.repository.ShopCartRepository;
-import ecommerce.com.pswproject.repository.UserRepository;
 
 public class ShopCartService {
     
