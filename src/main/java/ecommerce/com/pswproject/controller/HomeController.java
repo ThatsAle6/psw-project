@@ -7,8 +7,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class HomeController {
     
-    @GetMapping("/homepage")
+    @GetMapping
     public ModelAndView Homepage(){
-        return new ModelAndView("Homepage", "null", null);
+        return new ModelAndView("Homepage.html", "null", null);
     }
 }

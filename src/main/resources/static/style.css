@@ -1,34 +1,142 @@
-.header-image{
-    background-size: cover;
-    background-position: center;
-    min-height: 40vh;
+.header{
+    min-height: 15vh;
     position: relative;
-    color:whitesmoke;
+    color: black;
+    background-color: whitesmoke;
+}
+
+h4{
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px 2px rgb(0, 0, 0, .2);
+}
+
+.navbar{
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+    font-size: 1rem;
+    color: black;
+    margin-left: 110px;
+    margin-right: 110px;
+}
+.nav-item.dropdown .nav-link {
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.table-container{
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .1);
+    font-size: 1rem;
+    color: black;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 30px;
+}
+
+.separator {
+    margin: 0 5px;  /* Aggiusta la distanza tra il testo e la barra di separazione */
+    color: black; /* Colore del testo della barra di separazione */
+}
+
+.container {
+    background-size:cover;
+    background-position:center;
+    width: 100%; 
+    height: 70vh;
+    color: whitesmoke; /* Colore del testo all'interno del container */
+    display: flex; /* Utilizza flexbox per allineare il contenuto verticalmente e orizzontalmente */
+    flex-direction: column; /* Allinea il contenuto verticalmente */
+    justify-content:flex-end; /* Allinea il contenuto verticalmente al centro */
+    align-items: center; /* Allinea il contenuto orizzontalmente al centro */
+}
+
+
+
+/* Stile per il contenuto all'interno del container */
+.container h1 {
+    font-size: 3vw; /* Imposta la dimensione del font in base alla larghezza della finestra */
+}
+
+.container p {
+    font-size: 2vw; /* Imposta la dimensione del font in base alla larghezza della finestra */
+}
+
+.container button {
+    font-size: 1.5vw; /* Imposta la dimensione del font in base alla larghezza della finestra */
 }
 
 h1{
+    font-size: 4rem;
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px 2px rgb(0, 0, 0, .2);
+}
+h2 {
     font-size: 6rem;
-    font-family: 'Courier New', Courier, monospace;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.9);
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px 2px rgb(0, 0, 0, .2);
+}
+h3 {
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+}
+p {
+    font-family: 'Times New Roman', Times, serif;
+}
+h5{
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
 }
 
-.color-overlay{
+.color-overlay {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.799);
+}
+body {
+    background-color:white;
 }
 
-.navbar-cart{
-    margin-inline-end: auto;
+.card {
+    background-color: whitesmoke;
 }
 
+footer {
+    background-color: whitesmoke;
+   
+}
 
-@media (max-width: 768px){
-    .header-image{
-        min-height: 30vh;
+.custom-btn {
+  width: 200px; /* Specifica la larghezza desiderata per il tasto */
+}
+
+.table tbody tr {
+    height: 50px; /* Imposta l'altezza desiderata per le righe */
+  }
+
+@media (max-width: 768px) {
+    .header {
+        min-height: 7.5vh;
     }
-    h1{
-        font-size: calc(1.525rem + 3.3vw);
+    .navbar {
+        min-height: 1vh;
+        min-width: 1vh;
+    }
+    h1 {
+        font-size: calc(1.425rem + 2.5vw);
+    }
+    h2 {
+        font-size: calc(1.425rem + 2.5vw);
+    }
+    h3 {
+        font-size: calc(0.75rem + 1.5vw);
+    }
+    .card {
+        min-height: 15vh;
+    }
+    .dropstart{
+        min-height: 2vh;
+    }
+    p{
+        font-size: smaller;
     }
 }
