@@ -8,5 +8,7 @@ import ecommerce.com.pswproject.models.Prodotto;
 
 public interface ProdottoRepo extends JpaRepository<Prodotto, Long>{
     Optional<Prodotto> findByNome(String nome);
+
+    boolean existsByBarCode(String barcode);
     
 }

@@ -17,7 +17,7 @@ public class UtenteS {
     private UtenteRepo utenteRepo;
 
     @Transactional(readOnly = false)
-    public void createUtente( Utente utente){
+    public void creaUtente( Utente utente){
         if(!utenteRepo.exexistsByUsername(utente.getUsername())){
             utenteRepo.save(utente);
         }
@@ -28,7 +28,7 @@ public class UtenteS {
         if(utenteRepo.existsById(id)){
             utenteRepo.deleteById(id);
         }else{
-            throw new UtenteNonPresente("L'utente con id"+id+"non è presente nel sistema.")
+            throw new UtenteNonPresente("L'utente con id"+id+"non è presente nel sistema.");
         }
     }
 

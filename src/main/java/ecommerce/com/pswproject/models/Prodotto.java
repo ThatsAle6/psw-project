@@ -1,5 +1,6 @@
 package ecommerce.com.pswproject.models;
 
+import ecommerce.com.pswproject.utils.DTOProdotto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,16 +25,19 @@ public class Prodotto {
     @Column(name = "prezzo", nullable = false)
     private double prezzoBase;
 
+    @Column(nullable = false, length = 15, unique = true)
+    private String barCode;
+
     
     public Prodotto(){
         
     }
 
-    public Prodotto(Long id, int max_scorte, String nome, double prezzoBase) {
-        this.id = id;
-        this.max_scorte = max_scorte;
-        this.nome = nome;
-        this.prezzoBase = prezzoBase;
+    public Prodotto(DTOProdotto dto) {
+        this.nome = dto.getNome();
+        this.prezzoBase = dto.getPrezzo();
+        this.max_scorte = dto.getScorte();
+        this.barCode = dto.getBarcode();
     }
 
     /*  Getter & Setter */
@@ -67,6 +71,14 @@ public class Prodotto {
 
     public void setPrezzoBase(double prezzoBase) {
         this.prezzoBase = prezzoBase;
+    }
+
+    public String getBarcode() {
+        return barCode;
+    }
+
+    public void setBarcode(String barCode) {
+        this.barCode = barCode;
     }
 
     

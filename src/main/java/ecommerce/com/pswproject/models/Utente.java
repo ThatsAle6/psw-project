@@ -1,10 +1,19 @@
 package ecommerce.com.pswproject.models;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import ecommerce.com.pswproject.models.ordine.Ordine;
+import ecommerce.com.pswproject.models.secutity.Role;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -21,27 +30,27 @@ public class Utente {
     @Column(nullable = false, length = 20)
     private String cognome;
 
+    @Column(nullable = false, length = 25)
+    private String email;
+
     @Column(nullable = false, length = 15, unique = true)
     private String username;
 
     @Column(nullable = false)
     private String password;
 
+    @OneToMany(mappedBy = "utente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Ordine> ordini;
+
+    public List<Ordine> getOrdini(){
+        return ordini;
+    }
+
+    private Set<Role> ruoli = new HashSet<>();
 
     public Utente(){
 
-    }
-
-    public Utente(Long id, String nome, String cognome, String username, String password) {
-        this.id = id;
-        this.nome = nome;
-        this.cognome = cognome;
-        this.username = username;
-        this.password = password;
-    }
-
-
-    
+    }    
 
     /*  Getter & Setter */
 
@@ -84,5 +93,26 @@ public class Utente {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public Set<Role> getRuoli() {
+        return ruoli;
+    }
+
+    public void setRuoli(Set<Role> ruoli) {
+        this.ruoli = ruoli;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setOrdini(List<Ordine> ordini) {
+        this.ordini = ordini;
+    }
+    
     
 }
