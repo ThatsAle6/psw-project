@@ -8,7 +8,8 @@ import java.util.Map.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -22,6 +23,7 @@ import ecommerce.com.pswproject.utils.Carrello;
 import ecommerce.com.pswproject.utils.DTOordine;
 
 @RestController
+@RequestMapping("/ordineAPI")
 public class OrdineC {
 
     @Autowired
@@ -37,7 +39,7 @@ public class OrdineC {
     private UtenteRepo utenteRepo;
     
 
-    @GetMapping("/ordineCarrello")
+    @PostMapping("/ordineCarrello")
     public RedirectView ordineCart(){
 
         //sicurezza controllo utente
@@ -65,7 +67,8 @@ public class OrdineC {
                 }
                 prodotti.add(dto);
 
-            } 
+            }
+            System.out.println(e.getKey());
         }
         dtOrdine.setDettagliProd(prodotti);
         if(auth.isAuthenticated()){
@@ -78,7 +81,7 @@ public class OrdineC {
         }
         ordineS.createOrdine(dtOrdine);
         cart.svuotaCarrello();
-        return  new RedirectView("/carrelloAPI/viewCarrello");
+        return new RedirectView("/carrelloAPI/mostraCarrello");
     }
     
 }

@@ -24,19 +24,19 @@
     <navbar>
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid" style="color: black;">
-          <a class="navbar-brand text-dark" href="Homepage">
+          <a class="navbar-brand text-dark" th:href="@{/homepage}">
             HOME
           </a>
-          <a class="navbar-brand text-dark" href="Homepage">
+          <a class="navbar-brand text-dark" th:href="@{/homepage/shop}">
             SHOP
           </a>
-          <a class="navbar-brand text-dark" href="Homepage">
+          <a class="navbar-brand text-dark" th:href="@{/homepage}">
             ABOUT
           </a>
-          <a class="navbar-brand text-dark" href="Homepage">
+          <a class="navbar-brand text-dark" th:href="@{/homepage}">
             FAQ
           </a>
-          <a class="navbar-brand text-dark" href="Homepage">
+          <a class="navbar-brand text-dark" th:href="@{/homepage}">
             CONTACT
           </a>
           <span class="navbar-brand separator">|</span> <!-- Barra di separazione -->
@@ -69,9 +69,9 @@
     
     <div class="mio-container d-flex justify-content-center align-items-center" style="color: white;">
         <div class="card bg-dark my-5" style="width: 80rem; height: auto;" >
+          <h4 class="card-title m-4" style="text-align: center;">Compila con le informazioni richieste</h4>
           <div class="card-body">
-            <form action="#" method="post">
-                <!---->
+            <form th:action="@{/customerAPI/createCustomer}" method="post">
                 <div class="form-group row" style="margin-top: 15px;">
                     <label for="Nome" class="col-md-1 col-form-label">Nome</label>
                     <div class="col-md-2">
@@ -100,7 +100,7 @@
                     </div>
                 </div>
                 <div class="form-group text-center" style="margin-top: 20px;">
-                    <button type="submit" class="btn btn-light custom-btn">Invia</button>
+                    <button type="submit" class="btn btn-light custom-btn" onclick="alertCustomer()">Invia</button>
                 </div>
             </form>
           </div>
@@ -110,7 +110,7 @@
     <div class="container-fluid container-fixed">
         <ul class="text-center list-inline py-3">
              <li class="list-inline-item">
-                <a th:href="@{/homeworkers.html}" class="btn btn-outline-light btn-icon-bottom-left">
+                <a th:href="@{/homepage}" class="btn btn-outline-light btn-icon-bottom-left">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
                         <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
                         <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
@@ -120,20 +120,13 @@
         </ul>
     </div>
 
+    <script>
+      function alertCustomer(){
+        alert("Utente creato con successo!")
+      }
+    </script>
+
 <!--
-    <div class="d-flex justify-content-between pt-5 pb-5 mx-4">
-        <div class="card" style="width: 36rem;">
-            <img src="img/slide-2.png" class="card-img-top">
-            <div class="card-body">
-              <h3 class="card-title text-center">Chi siamo</h5>
-              <p class="card-text">L'azienda Arangilena s.r.l.  opera con notevole successo da molti anni nel settore agroalimentare.
-                E’  una azienda giovane e dinamica che si occupa della lavorazione e del commercio all’ingrosso di agrumi.</p>
-              <div class="d-grid">
-                <button type="button" class="btn btn-outline-success">Scoprici!</button>
-              </div>
-            </div>
-        </div>
-    </div>
     <div class="card text-bg-dark">
         <img src="/alfaVersion/front-end/img/Apple-Watch-S9-hero-Gear.webp" class="card-img">
         <div class="card-img-overlay">
@@ -144,6 +137,6 @@
 -->
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -23,6 +23,7 @@ public class UserDetailsServiceImp implements UserDetailsService{
     @Autowired
     private UtenteRepo utenteRepo;
 
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
         Optional<Utente> op = utenteRepo.findByUsername(username);
         if(!op.isEmpty()){

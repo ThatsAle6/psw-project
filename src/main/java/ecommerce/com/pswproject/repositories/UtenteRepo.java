@@ -11,5 +11,5 @@ import ecommerce.com.pswproject.models.Utente;
 public interface UtenteRepo extends JpaRepository<Utente, Long> {
     Optional<Utente> findByUsername(String username);
 
-    boolean exexistsByUsername(String username);
+    boolean existsByUsername(String username);
 }

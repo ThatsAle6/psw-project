@@ -6,6 +6,7 @@ import java.util.LinkedList;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import ecommerce.com.pswproject.models.Utente;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -31,7 +32,7 @@ public class Ordine {
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_utente")
     @JsonIgnore
-    private Long utente;
+    private Utente utente;
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_ordine")
@@ -63,12 +64,12 @@ public class Ordine {
     }
 
 
-    public Long getUtente() {
+    public Utente getUtente() {
         return utente;
     }
 
 
-    public void setUtente(Long utente) {
+    public void setUtente(Utente utente) {
         this.utente = utente;
     }
 

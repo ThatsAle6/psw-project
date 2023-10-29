@@ -3,12 +3,21 @@ package ecommerce.com.pswproject.utils;
 public class DTOUtente {
     private String nome;
     private String cognome;
+    private String email;
     private String username;
     private String password;
     private String ruolo;
 
     public DTOUtente(){
 
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getNome() {

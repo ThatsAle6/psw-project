@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/src/main/resources/static/image/clock.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/src/main/resources/static/style.css">
+    <link rel="stylesheet" href="/style.css">
     <title>Products</title>
 </head>
 <body>
@@ -21,19 +21,19 @@
     <navbar>
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid" style="color: black;">
-          <a class="navbar-brand text-dark" href="Homepage">
+          <a class="navbar-brand text-dark" th:href="@{/homepage}">
             HOME
           </a>
-          <a class="navbar-brand text-dark" href="Homepage">
+          <a class="navbar-brand text-dark" th:href="@{/homepage/shop}">
             SHOP
           </a>
-          <a class="navbar-brand text-dark" href="Homepage">
+          <a class="navbar-brand text-dark" th:href="@{/homepage}">
             ABOUT
           </a>
-          <a class="navbar-brand text-dark" href="Homepage">
+          <a class="navbar-brand text-dark" th:href="@{/homepage}">
             FAQ
           </a>
-          <a class="navbar-brand text-dark" href="Homepage">
+          <a class="navbar-brand text-dark" th:href="@{/homepage}">
             CONTACT
           </a>
           <span class="navbar-brand separator">|</span> <!-- Barra di separazione -->
@@ -45,11 +45,11 @@
               </svg> Account
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Login</a></li>
-              <li><a class="dropdown-item" href="#">Sign Up</a></li>
+              <li><a class="dropdown-item" th:href="@{/login}">Login</a></li>
+              <li><a class="dropdown-item" th:href="@{/homepage/signUp}">Sign Up</a></li>
             </ul>
           </div>
-          <a class="navbar-brand text-dark" href="Carrello">
+          <a class="navbar-brand text-dark" th:href="@{/carrelloAPI/mostraCarrello}">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart3" viewBox="0 0 20 20">
                 <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
               </svg>
@@ -57,25 +57,25 @@
         </div>
     </nav>
     </navbar>
-<!-- RICORDATI IL JAVASCRIPT PER POTER PASSARE LE INFORMAZIONI DEI PRODOTTI IN FORMATO Json-->
+
     <product>
         <div class="d-flex justify-content-center pt-5 pb-5 mx-4">
             <div class="card" style="width: 18rem;">
-                <img src="/src/main/resources/static/image/appleWatch9.jpeg" class="card-img-top">
+                <img src="/image/appleWatch9.jpeg" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Apple Watch Series 9</h5>
-                    <p class="card-text">459,00€</p>
-                    <form action="#" method="post">
+                    <p class="card-text">449,99€</p>
+                    <form th:action="@{/carrelloAPI/addCart}" method="post">
                         <div class="form-group row">
                             <div class="col-md-0">
-                                <input type="hidden" name="Watch9" value="Watch9">
+                                <input type="hidden" name="nome" value="Watch9">
                             </div>
                             <label for="Quantità" class="col-md-3 col-form-label">Q.tà</label>
                             <div class="col-md-4">
-                                <input type="number" min="0" class="form-control" placeholder="q.tà">
+                                <input type="number" name="qnt" min="0" class="form-control" placeholder="q.tà">
                             </div>
                             <div style="width: 350px; align-items: center;">
-                                <button type="submit" class="btn btn-outline-dark text-center">Buy</button>
+                                <button type="submit"  class="btn btn-outline-dark text-center">Buy</button>
                             </div>
                         </div>
                     </form>
@@ -83,18 +83,18 @@
             </div>
 
             <div class="card mx-5" style="width: 18rem;">
-                <img src="/src/main/resources/static/image/applewatchUltra.jpeg" class="card-img-top">
+                <img src="/image/applewatchUltra.jpeg" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Apple Watch Ultra</h5>
-                    <p class="card-text">909,00€</p>
-                    <form action="#" method="post">
+                    <p class="card-text">909,99€</p>
+                    <form th:action="@{/carrelloAPI/addCart}" method="post">
                         <div class="form-group row">
                             <div class="col-md-0">
-                                <input type="hidden" name="Ultra" value="Ultra">
+                                <input type="hidden" name="nome" value="Ultra">
                             </div>
                             <label for="Quantità" class="col-md-3 col-form-label">Q.tà</label>
                             <div class="col-md-4">
-                                <input type="number" min="0" class="form-control" placeholder="q.tà">
+                                <input type="number" name="qnt" min="0" class="form-control" placeholder="q.tà">
                             </div>
                             <div style="width: 350px; align-items: center;">
                                 <button type="submit" class="btn btn-outline-dark text-center">Buy</button>
@@ -105,18 +105,18 @@
             </div>
 
             <div class="card" style="width: 18rem;">
-                <img src="/src/main/resources/static/image/AppleWatchSE.jpeg" class="card-img-top">
+                <img src="/image/AppleWatchSE.jpeg" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">Apple Watch SE</h5>
-                    <p class="card-text">289,00€</p>
-                    <form action="#" method="post">
+                    <p class="card-text">289,99€</p>
+                    <form th:action="@{/carrelloAPI/addCart}" method="post">
                         <div class="form-group row">
                             <div class="col-md-0">
-                                <input type="hidden" name="SE" value="SE">
+                                <input type="hidden" name="nome" value="SE">
                             </div>
                             <label for="Quantità" class="col-md-3 col-form-label">Q.tà</label>
                             <div class="col-md-4">
-                                <input type="number" min="0" class="form-control" placeholder="q.tà">
+                                <input type="number" name="qnt" min="0" class="form-control" placeholder="q.tà">
                             </div>
                             <div style="width: 350px; align-items: center;">
                                 <button type="submit" class="btn btn-outline-dark text-center">Buy</button>
@@ -127,6 +127,50 @@
             </div>
         </div>
     </product>
+
+    <!-- #TODO  JAVASCRIPT PER POTER PASSARE LE INFORMAZIONI DEI PRODOTTI IN FORMATO Json-->
+
+
+    <script>    
+        // Seleziona tutti i form presenti nella pagina
+        const forms = document.querySelectorAll("form");
+        forms.forEach(form => {
+            form.addEventListener("submit", function(event) {
+                event.preventDefault(); // Ferma l'invio del form
+
+                // Crea un oggetto JSON con i dati del form
+                const formData = {
+                    nome: form.querySelector("[name='nome']").value,
+                    qnt: form.querySelector("[name='qnt']").value
+                };
+
+                // Invia l'oggetto JSON al server
+                sendData(formData);
+            });
+        });
+
+        function sendData(data) {
+            // Effettua la richiesta AJAX per inviare i dati al server
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "/carrelloAPI/addCart");
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(JSON.stringify(data));
+
+            // Opzionalmente, puoi gestire la risposta del server qui
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        location.reload();
+                        alert("Per poter aggiungere un prodotto al carrello effettua prima il Login o registrati al nostro sito!");
+                    } else {
+                        alert("Prodotto aggiunto con successo.");
+                    }
+                }
+            };
+        }
+    </script>
+    
+
 <!--
     <div class="d-flex justify-content-between pt-5 pb-5 mx-4">
         <div class="card" style="width: 36rem;">
@@ -167,7 +211,7 @@
                 </svg>
             </div>
         </div>
-        <p class="text-center">Copyright: InTime <img src="img/copyright.png" style="height: 14px; width: 14px;"></p>
+        <p class="text-center">Copyright: InTime</p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>

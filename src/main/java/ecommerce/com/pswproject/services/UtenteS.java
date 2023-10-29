@@ -18,7 +18,7 @@ public class UtenteS {
 
     @Transactional(readOnly = false)
     public void creaUtente( Utente utente){
-        if(!utenteRepo.exexistsByUsername(utente.getUsername())){
+        if(!utenteRepo.existsByUsername(utente.getUsername())){
             utenteRepo.save(utente);
         }
     }

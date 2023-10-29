@@ -36,13 +36,20 @@ public class SecurityConfig {
 
         return http.cors(cors -> cors.disable()).csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(
-            authorize -> authorize.requestMatchers("/homepage").permitAll()
-
+            authorize ->    
+                            
+                            authorize.requestMatchers("/image/**").permitAll()
+                            .requestMatchers("/style.css").permitAll()
+                            .requestMatchers("/carrelloAPI/**").hasAuthority("GUEST")
+                            .requestMatchers("/ordineAPI/ordineCarrello").hasAuthority("GUEST")    
+                            .requestMatchers("/customerAPI/**").permitAll()
+                            .requestMatchers("/homepage/**").permitAll()
+                            .anyRequest().authenticated()
 
             ).formLogin(
                 form ->  form.defaultSuccessUrl("/homepage").permitAll()
             ).logout(
-                logout -> logout.logoutUrl("/").logoutSuccessUrl("/homepage").permitAll()
+                logout -> logout.logoutUrl("/carrelloAPI/logout").logoutSuccessUrl("/homepage").permitAll()
             ).build();
     }
 }

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ecommerce.com.pswproject.models.Prodotto;
-import ecommerce.com.pswproject.models.Utente;
 import ecommerce.com.pswproject.models.ordine.Ordine;
 import ecommerce.com.pswproject.repositories.DettOrdineRepo;
 import ecommerce.com.pswproject.repositories.OrdineRepo;
@@ -26,9 +25,6 @@ public class OrdineS {
     @Autowired
     private OrdineRepo ordineRepo;
 
-    @Autowired 
-    private UtenteRepo utenteRepo;
-
     @Autowired
     private ProdottoRepo prodottoRepo;
 
@@ -37,6 +33,9 @@ public class OrdineS {
 
     @Autowired
     private DettOrdineRepo dettOrdineRepo;
+
+    @Autowired
+    private UtenteRepo utenteRepo;
 
     @Transactional(readOnly = true)
     public List<Ordine> listaOrdini(){
@@ -58,10 +57,10 @@ public class OrdineS {
             prod.setMax_scorte(scorte_nuove);
             prodottoRepo.save(prod);
             dettOrdineRepo.save(ordine.getDettagliProd().get(i));
-            
+            i++;
         }
         o.setData(LocalDate.now());
-        o.setUtente(ordine.getUtente());
+        o.setUtente(utenteRepo.findById(ordine.getUtente()).get());
         o.setDettagli(ordine.getDettagliProd());
 
         ordineRepo.save(o);

@@ -24,19 +24,19 @@
     <navbar>
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid" style="color: black;">
-          <a class="navbar-brand text-dark" th:href="/Homepage">
+          <a class="navbar-brand text-dark" th:href="@{/homepage}">
             HOME
           </a>
-          <a class="navbar-brand text-dark" th:href="/Homepage/shop">
+          <a class="navbar-brand text-dark" th:href="@{/homepage/shop}">
             SHOP
           </a>
-          <a class="navbar-brand text-dark" th:href="/Homepage">
+          <a class="navbar-brand text-dark" th:href="@{/homepage}">
             ABOUT
           </a>
-          <a class="navbar-brand text-dark" th:href="/Homepage">
+          <a class="navbar-brand text-dark" th:href="@{/homepage}">
             FAQ
           </a>
-          <a class="navbar-brand text-dark" th:href="Homepage">
+          <a class="navbar-brand text-dark" th:href="@{/homepage}">
             CONTACT
           </a>
           <span class="navbar-brand separator">|</span> <!-- Barra di separazione -->
@@ -48,11 +48,11 @@
               </svg> Account
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Login</a></li>
-              <li><a class="dropdown-item" href="#">Sign Up</a></li>
+              <li><a class="dropdown-item" th:href="@{/login}">Login</a></li>
+              <li><a class="dropdown-item" th:href="@{/customerAPI/createView}">Sign Up</a></li>
             </ul>
           </div>
-          <a class="navbar-brand text-dark" href="/mostraCarrello">
+          <a class="navbar-brand text-dark" th:href="@{/carrelloAPI/mostraCarrello}">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart3" viewBox="0 0 20 20">
                 <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
               </svg>
@@ -64,24 +64,11 @@
     <div class="container pt-5 pb-5" style="background-image: url(/image/Apple-Watch-S9-hero-Gear.webp);">
       <h1>Be in Time</h1>
       <div class="d-grid">
-        <button type="button" class="btn btn-outline-light">Shop Now</button>
+        <a th:href="@{/homepage/shop}" class="btn btn-dark">Shop Now</a>
       </div>        
     </div>
 
 <!--
-    <div class="d-flex justify-content-between pt-5 pb-5 mx-4">
-        <div class="card" style="width: 36rem;">
-            <img src="img/slide-2.png" class="card-img-top">
-            <div class="card-body">
-              <h3 class="card-title text-center">Chi siamo</h5>
-              <p class="card-text">L'azienda Arangilena s.r.l.  opera con notevole successo da molti anni nel settore agroalimentare.
-                E’  una azienda giovane e dinamica che si occupa della lavorazione e del commercio all’ingrosso di agrumi.</p>
-              <div class="d-grid">
-                <button type="button" class="btn btn-outline-success">Scoprici!</button>
-              </div>
-            </div>
-        </div>
-    </div>
     <div class="card text-bg-dark">
         <img src="/alfaVersion/front-end/img/Apple-Watch-S9-hero-Gear.webp" class="card-img">
         <div class="card-img-overlay">
@@ -109,7 +96,7 @@
                 </svg>
             </div>
         </div>
-        <p class="text-center">Copyright: InTime <img src="img/copyright.png" style="height: 14px; width: 14px;"></p>
+        <p class="text-center">Copyright: InTime</p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>

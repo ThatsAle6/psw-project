@@ -19,7 +19,7 @@ public class HomepageC {
     }
 
     @GetMapping("/signUp")
-    public ModelAndView regiatra(){
+    public ModelAndView registra(){
         return new ModelAndView("SignUp.hmtl", "null", null);
     }
 }
