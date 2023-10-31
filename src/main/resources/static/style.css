@@ -50,19 +50,54 @@ h4{
     align-items: center; /* Allinea il contenuto orizzontalmente al centro */
 }
 
+/* Stile ALERT JavaScript */
+.custom-alert{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #000;
+    z-index: 9999;
 
+}
+.alert-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Imposta il colore di sfondo con un'opacità */
+    backdrop-filter: blur(5px); /* Applica uno sfocatura al filtro per creare l'effetto sfocato */
+    z-index: 9998; /* Posiziona l'overlay dietro l'alert */
+}
+.message{
+    display: block;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+    font-size: 1.5rem;
+    background-color: whitesmoke;
+}
 
 /* Stile per il contenuto all'interno del container */
 .container h1 {
-    font-size: 3vw; /* Imposta la dimensione del font in base alla larghezza della finestra */
+    font-size: 3vw; 
 }
 
 .container p {
-    font-size: 2vw; /* Imposta la dimensione del font in base alla larghezza della finestra */
+    font-size: 2vw; 
 }
 
 .container button {
-    font-size: 1.5vw; /* Imposta la dimensione del font in base alla larghezza della finestra */
+    font-size: 1.5vw; 
 }
 
 h1{

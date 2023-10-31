@@ -47,7 +47,7 @@ public class SecurityConfig {
                             .anyRequest().authenticated()
 
             ).formLogin(
-                form ->  form.defaultSuccessUrl("/homepage").permitAll()
+                form ->  form.successHandler(new CustomRedirect()).permitAll()
             ).logout(
                 logout -> logout.logoutUrl("/carrelloAPI/logout").logoutSuccessUrl("/homepage").permitAll()
             ).build();

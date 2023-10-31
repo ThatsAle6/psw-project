@@ -76,7 +76,7 @@
                     <td th:text="${prodotto.getNome()}"></td>
                     <td th:text="${prodotto.getQnt()}"></td>
                     <td th:text="${prodotto.getPrezzo_parziale}"></td>
-                    <td><button type="button" class="btn btn-outline-dark" th:href="@{carrelloAPI/deleteFromCart}">Rimuovi</a></td>
+                    <td><button type="button" class="btn btn-outline-dark">Rimuovi</a></td>
                 </tr>
             </tbody>
         </table>
@@ -114,12 +114,34 @@
                 if (xhr.readyState === XMLHttpRequest.DONE) {
                     if (xhr.status === 200) {
                         location.reload();
-                        alert("Prodotto rimosso dal carrello!");
                     } else {
-                        alert("Si è verificato un errore durante l'invio dei dati.");
+                        showAlert("Si è verificato un errore durante l'invio dei dati.");
                     }
                 }
             };
+        }
+
+        function showAlert(message) {
+            const messageSpan = document.querySelector('.custom-alert .message');
+            const customAlert = document.querySelector('.custom-alert');
+            const overlay = document.querySelector('.overlay');
+            if (message) {
+                messageSpan.textContent = message;
+            }
+            customAlert.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        const closeButton = document.querySelector('.custom-alert .close-button');
+        closeButton.addEventListener('click', function() {
+            hideAlert();
+        });
+
+        function hideAlert() {
+            const customAlert = document.querySelector('.custom-alert');
+            const overlay = document.querySelector('.overlay');
+            customAlert.style.display = 'none';
+            overlay.style.display = 'none';
         }
     </script>
 
@@ -145,7 +167,7 @@
 
     <script>
         function confermaOrdine(){
-            alert("ordine inviato correttamente");
+            showAlert("ordine inviato correttamente");
         }
     </script>
 

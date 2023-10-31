@@ -1,9 +1,8 @@
 package ecommerce.com.pswproject.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,14 +25,11 @@ public class ProdottoC {
         prodottoS.creaProdotto(new Prodotto(p));
     }
 
-    @GetMapping("/statoAccesso")
-    public ResponseEntity<String> statoAccesso(Authentication auth){
-
-        if(auth != null && auth.isAuthenticated()){
-            return new ResponseEntity<>("Utente autenticato", HttpStatus.OK);
-        }else{
-            return new ResponseEntity<String>("Utente non autenticato", HttpStatus.UNAUTHORIZED);
-        }
+    @GetMapping("/isAuth")
+    public boolean isUserAuthenticated() {
+	
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    return auth.isAuthenticated();
     }
 
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/src/main/resources/static/image/clock.svg">
+    <link rel="icon" href="/image/clock.svg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/style.css">
     <title>Products</title>
@@ -128,47 +128,85 @@
         </div>
     </product>
 
-    <!-- #TODO  JAVASCRIPT PER POTER PASSARE LE INFORMAZIONI DEI PRODOTTI IN FORMATO Json-->
+    <!-- #TODO  JAVASCRIPT PER POTER PASSARE LE INFORMAZIONI DEI PRODOTTI IN FORMATO Json ED EFFETTUARE CONTROLLI SULL'AUTENTICAZIONE-->
 
+    <div class="custom-alert">
+        <span class="message"></span>
+        <div class="alert-button">
+            <button class="btn btn-outline-dark close-button">Chiudi</button>
+        </div>
+    </div>
 
-    <script>    
-        // Seleziona tutti i form presenti nella pagina
+    <div class="overlay" style="display: none;"></div>
+
+    <script>
         const forms = document.querySelectorAll("form");
+        const customAlert = document.querySelector('.custom-alert');
+        const messageSpan = document.querySelector('.custom-alert .message');
+        const closeButton = document.querySelector('.custom-alert .close-button');
+        const overlay = document.querySelector('.overlay');
+
+        closeButton.addEventListener('click', function() {
+            hideAlert();
+        });
+
         forms.forEach(form => {
-            form.addEventListener("submit", function(event) {
-                event.preventDefault(); // Ferma l'invio del form
-
-                // Crea un oggetto JSON con i dati del form
-                const formData = {
-                    nome: form.querySelector("[name='nome']").value,
-                    qnt: form.querySelector("[name='qnt']").value
-                };
-
-                // Invia l'oggetto JSON al server
-                sendData(formData);
+            form.addEventListener("submit", function(event){
+                event.preventDefault();
+                const controller = new AbortController();
+                const signal = controller.signal;
+                fetch("/productAPI/isAuth", {signal}).then(response => {
+                    if(response.status === 200) {
+                        console.log("Endpoint raggiunto");
+                        return response.text();
+                    }
+                }).then(data => {
+                    if(data.includes("true")) {
+                        const formData = {
+                            nome: form.querySelector("[name='nome']").value,
+                            qnt: form.querySelector("[name='qnt']").value
+                        };
+                        sendData(formData);
+                    } else {
+                        messageSpan.textContent = "Effettua il Login o registrati al nostro sito per poter effettuare acquisti!";
+                        showAlert();
+                        controller.abort();
+                    }
+                });
             });
         });
 
         function sendData(data) {
-            // Effettua la richiesta AJAX per inviare i dati al server
             const xhr = new XMLHttpRequest();
             xhr.open("POST", "/carrelloAPI/addCart");
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.send(JSON.stringify(data));
 
-            // Opzionalmente, puoi gestire la risposta del server qui
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === XMLHttpRequest.DONE) {
                     if (xhr.status === 200) {
-                        location.reload();
-                        alert("Per poter aggiungere un prodotto al carrello effettua prima il Login o registrati al nostro sito!");
+                        showAlert("Errore nell'invio dei dati!");
                     } else {
-                        alert("Prodotto aggiunto con successo.");
+                        showAlert("Prodotto aggiunto al Carrello!");
                     }
                 }
             };
         }
+
+        function showAlert(message) {
+            if (message) {
+                messageSpan.textContent = message;
+            }
+            customAlert.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        function hideAlert() {
+            customAlert.style.display = 'none';
+            overlay.style.display = 'none';
+        }
     </script>
+    
     
 
 <!--
