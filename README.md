@@ -1,4 +1,4 @@
 # PSW project:  
-# web application for an e-commerce
-# using Spring Framework for backend
-# using Html/Bootstrap/CSS and Thymeleaf for frontend
+# Progetto per l'esame di PSW. Realizzazione di un e-commerce.
+# Realiazzato mediante framework Spring Boot.
+# Utilizzato Html/Bootstrap/CSS e Thymeleaf per il frontend.

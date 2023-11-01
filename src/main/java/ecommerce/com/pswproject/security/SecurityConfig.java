@@ -41,7 +41,7 @@ public class SecurityConfig {
                             authorize.requestMatchers("/image/**").permitAll()
                             .requestMatchers("/style.css").permitAll()
                             .requestMatchers("/carrelloAPI/**").hasAuthority("GUEST")
-                            .requestMatchers("/ordineAPI/ordineCarrello").hasAuthority("GUEST")    
+                            .requestMatchers("/ordineAPI/**").hasAuthority("GUEST")    
                             .requestMatchers("/customerAPI/**").permitAll()
                             .requestMatchers("/homepage/**").permitAll()
                             .anyRequest().authenticated()
