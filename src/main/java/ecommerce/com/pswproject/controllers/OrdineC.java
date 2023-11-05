@@ -41,6 +41,7 @@ public class OrdineC {
     private UtenteRepo utenteRepo;
     
 
+
     @PostMapping("/ordineCarrello")
     public RedirectView ordineCart(){
 
@@ -68,7 +69,8 @@ public class OrdineC {
                     return new RedirectView("/errore/scorte");
                 }
                 prodotti.add(dto);
-
+            }else{
+                return new RedirectView("/errore/prodottoNonPresente");
             }
             System.out.println(e.getKey());
         }
